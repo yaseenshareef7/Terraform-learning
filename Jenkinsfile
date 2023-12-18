@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    parameters{
+      string default value : 'apply' description:'apply configs' name:'apply'
  
     stages {
         stage('checkout') {
