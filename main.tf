@@ -18,7 +18,7 @@ provider "aws" {
 # Customer managed KMS key
 ###########################
 resource "aws_s3_bucket" "example" {
-  bucket = "bucket3000978738938967576775553"
+  bucket = "bucket30009ddadada78738938967576775553"
 
   tags = {
     Name        = "bucket00097873893893"
