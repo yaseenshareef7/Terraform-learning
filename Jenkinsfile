@@ -10,8 +10,10 @@ pipeline {
       stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t myimage:latest .' 
+                sh 'docker build -t myimage:latest .'
+	withDockerRegistry([ credentialsId: "yaseenshareef7", url: "" ]){
                   sh 'docker tag myimage yaseenshareef7/myregistry:latest'
+	}
 
                
           }
