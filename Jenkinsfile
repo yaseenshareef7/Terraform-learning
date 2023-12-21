@@ -27,4 +27,5 @@ withDockerRegistry([ credentialsId: "yaseenshareef7", url: "" ]) {
       sh 'docker logout'           
     }      
   }  
-} //pipeline
+}
+}//pipeline
