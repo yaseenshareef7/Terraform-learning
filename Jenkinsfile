@@ -21,7 +21,7 @@ pipeline {
           
             steps {
         withDockerRegistry([ credentialsId: "yaseenshareef7", url: "" ]) {
-          sh  'docker push yaseenshareef7/myregistry:1.0'
+          sh  'docker push yaseenshareef7/myregistry:latest'
         
         }
                   
