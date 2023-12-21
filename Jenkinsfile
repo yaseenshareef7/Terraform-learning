@@ -6,7 +6,7 @@ pipeline {
   stages {         
     stage("Git Checkout"){           
       steps{                
-	git credentialsId: '2aa7e006-56ec-4189-ae08-ca53dc41bd30', url: 'https://github.com/yaseenshareef7/Terraform-learning.git'                 
+	checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yaseenshareef7/Terraform-learning.git']]])              
 	echo 'Git Checkout Completed'            
       }        
     }
