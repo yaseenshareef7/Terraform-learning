@@ -1,8 +1,5 @@
 pipeline {   
-  agent any
-  environment {     
-    DOCKERHUB_CREDENTIALS= credentials('yaseenshareef7')     
-  }    
+  agent any  
   stages {         
     stage("Git Checkout"){           
       steps{                
@@ -10,25 +7,21 @@ pipeline {
 	echo 'Git Checkout Completed'            
       }        
     }
-     stage('Login to Docker Hub') {         
-      steps{                            
-	sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                 
-	echo 'Login Completed'                
-      }           
-    }      	  
+     
     stage('Build Docker Image') {         
-      steps{                
+      steps{
 	sh 'sudo docker build -t yaseenshareef7/myregistry:$BUILD_NUMBER .'           
         echo 'Build Image Completed'                
       }           
     }         
     stage('Push Image to Docker Hub') {         
-      steps{                            
+      steps{
+withDockerRegistry([ credentialsId: "yaseenshareef7", url: "" ]) {
 	sh 'sudo docker push yaseenshareef7/myregistry:$BUILD_NUMBER'                 
 	echo 'Push Image Completed'       
       }           
     }      
-  } //stages 
+  } 
   post{
     always {  
       sh 'docker logout'           
