@@ -10,9 +10,9 @@ pipeline {
       stage('Docker Build and Tag') {
            steps {
               
-                sh 'docker build -t nginxtest:latest .' 
+                sh 'docker build -t myimage:1.0 .' 
                   sh 'docker tag myimage yaseenshareef7/myregistry:1.0'
-                sh 'docker tag nginxtest yaseenshareef7/myregistry:$BUILD_NUMBER'
+                sh 'docker tag myimage yaseenshareef7/myregistry:$BUILD_NUMBER'
                
           }
         }
